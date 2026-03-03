@@ -4,6 +4,7 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from .models import Pokemon, PokemonEntity
 from django.utils.timezone import localtime
+from django.shortcuts import get_object_or_404
 
 
 MOSCOW_CENTER = [55.751244, 37.618423]
@@ -68,4 +69,36 @@ def show_all_pokemons(request):
 
 
 def show_pokemon(request, pokemon_id):
-    return HttpResponseNotFound('<h1>Страница в разработке</h1>')
+    pokemon = get_object_or_404(Pokemon, id=pokemon_id)
+    
+    folium_map = folium.Map(location=MOSCOW_CENTER, zoom_start=12)
+    
+    current_time = localtime()
+    entities = pokemon.entities.filter(
+        appeared_at__lte=current_time,
+        disappeared_at__gte=current_time
+    )
+    
+    for entity in entities:
+        image_url = DEFAULT_IMAGE_URL
+        if pokemon.image:
+            image_url = request.build_absolute_uri(pokemon.image.url)
+        
+        add_pokemon(
+            folium_map,
+            entity.lat,
+            entity.lon,
+            image_url
+        )
+    
+    pokemon_data = {
+        'pokemon_id': pokemon.id,
+        'title_ru': pokemon.title,
+        'img_url': request.build_absolute_uri(pokemon.image.url) if pokemon.image else None,
+        'description': '',
+    }
+    
+    return render(request, 'pokemon.html', context={
+        'map': folium_map._repr_html_(),
+        'pokemon': pokemon_data
+    })
