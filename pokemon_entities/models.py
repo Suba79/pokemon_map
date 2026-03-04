@@ -4,7 +4,7 @@ from django.db import models
 class Pokemon(models.Model):
     title = models.CharField(
         max_length=200,
-        verbose_name='Имя (рус.)'  # добавил verbose_name
+        verbose_name='Имя (рус.)'
     )
     title_en = models.CharField(
         max_length=200,
@@ -20,7 +20,7 @@ class Pokemon(models.Model):
         upload_to='pokemon_images',
         null=True,
         blank=True,
-        verbose_name='Изображение'  # добавил verbose_name
+        verbose_name='Изображение'
     )
     description = models.TextField(
         blank=True,
@@ -38,7 +38,7 @@ class Pokemon(models.Model):
     def __str__(self):
         return self.title
 
-    class Meta:  # добавил Meta класс
+    class Meta:
         verbose_name = 'Покемон'
         verbose_name_plural = 'Покемоны'
 
@@ -48,7 +48,7 @@ class PokemonEntity(models.Model):
         Pokemon,
         on_delete=models.CASCADE,
         related_name='entities',
-        verbose_name='Покемон'  # добавил verbose_name
+        verbose_name='Покемон'
     )
     lat = models.FloatField(
         verbose_name='Широта'
@@ -95,6 +95,6 @@ class PokemonEntity(models.Model):
     def __str__(self):
         return f'{self.pokemon.title} (уровень {self.level})' if self.level else self.pokemon.title
 
-    class Meta:  # добавил Meta класс
+    class Meta:
         verbose_name = 'Сущность покемона'
         verbose_name_plural = 'Сущности покемонов'
