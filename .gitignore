@@ -91,4 +91,16 @@ media/
 
 # Virtual environment
 venv/
-env/
+.env
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Кэш Python
+__pycache__/
+*.pyc
+
+# База данных
+*.sqlite3
