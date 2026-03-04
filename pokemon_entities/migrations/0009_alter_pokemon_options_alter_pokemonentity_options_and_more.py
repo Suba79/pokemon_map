@@ -13,7 +13,8 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name="pokemon",
-            options={"verbose_name": "Покемон", "verbose_name_plural": "Покемоны"},
+            options={"verbose_name": "Покемон",
+                     "verbose_name_plural": "Покемоны"},
         ),
         migrations.AlterModelOptions(
             name="pokemonentity",

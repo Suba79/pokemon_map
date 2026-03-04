@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="pokemon",
             name="image",
-            field=models.ImageField(blank=True, null=True, upload_to="pokemon_images"),
+            field=models.ImageField(
+                blank=True, null=True, upload_to="pokemon_images"),
         ),
     ]

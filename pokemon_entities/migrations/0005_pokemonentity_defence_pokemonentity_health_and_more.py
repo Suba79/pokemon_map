@@ -13,17 +13,20 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="pokemonentity",
             name="defence",
-            field=models.IntegerField(blank=True, null=True, verbose_name="Защита"),
+            field=models.IntegerField(
+                blank=True, null=True, verbose_name="Защита"),
         ),
         migrations.AddField(
             model_name="pokemonentity",
             name="health",
-            field=models.IntegerField(blank=True, null=True, verbose_name="Здоровье"),
+            field=models.IntegerField(
+                blank=True, null=True, verbose_name="Здоровье"),
         ),
         migrations.AddField(
             model_name="pokemonentity",
             name="level",
-            field=models.IntegerField(blank=True, null=True, verbose_name="Уровень"),
+            field=models.IntegerField(
+                blank=True, null=True, verbose_name="Уровень"),
         ),
         migrations.AddField(
             model_name="pokemonentity",
@@ -35,6 +38,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="pokemonentity",
             name="strength",
-            field=models.IntegerField(blank=True, null=True, verbose_name="Атака"),
+            field=models.IntegerField(
+                blank=True, null=True, verbose_name="Атака"),
         ),
     ]
