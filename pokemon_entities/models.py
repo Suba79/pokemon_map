@@ -2,6 +2,8 @@ from django.db import models
 
 class Pokemon(models.Model):
     title = models.CharField(max_length=200)
+    title_en = models.CharField(max_length=200, blank=True, verbose_name='Имя (англ.)')
+    title_jp = models.CharField(max_length=200, blank=True, verbose_name='Имя (яп.)')
     image = models.ImageField(upload_to='pokemon_images', null=True, blank=True)
     description = models.TextField(blank=True, verbose_name='Описание')
     
