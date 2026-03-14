@@ -104,3 +104,6 @@ __pycache__/
 
 # База данных
 *.sqlite3
+
+
+pokemon_entities/pokemons.json
